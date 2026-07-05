@@ -138,7 +138,7 @@
             border: none;
         }
 
-        /* ===== HERO (Info page) ===== */
+        /* ===== HERO ===== */
         .hero {
             padding: 60px 0 30px;
             text-align: center;
@@ -251,105 +251,6 @@
             margin: 0 auto;
         }
 
-        /* ===== VIDEO GRID ===== */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 24px;
-            padding: 20px 0 20px;
-        }
-
-        .video-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .video-card:hover {
-            transform: translateY(-6px);
-            border-color: #FF6000;
-            box-shadow: 0 16px 48px rgba(255, 96, 0, 0.15);
-        }
-
-        .video-card .thumbnail {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #1a2a4a;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .video-card .thumbnail .big-icon {
-            font-size: 40px;
-            color: #FF0000;
-            margin-bottom: 8px;
-        }
-
-        .video-card .thumbnail .title-tag {
-            font-size: 13px;
-            font-weight: 700;
-            color: #FF6000;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            background: rgba(255, 96, 0, 0.15);
-            padding: 4px 12px;
-            border-radius: 50px;
-            display: inline-block;
-            margin-bottom: 4px;
-        }
-
-        .video-card .thumbnail .video-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #fff;
-            line-height: 1.3;
-            max-width: 90%;
-        }
-
-        .video-card .thumbnail .duration {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.85);
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .video-card .info {
-            padding: 14px 18px 18px;
-        }
-
-        .video-card .info .title {
-            color: #fff;
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 1.3;
-            margin-bottom: 6px;
-        }
-
-        .video-card .info .meta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 13px;
-            color: #64748b;
-        }
-
-        .video-card .info .meta i {
-            margin-right: 4px;
-        }
-
         /* ===== CONNECT SECTION ===== */
         .connect-grid {
             display: grid;
@@ -428,6 +329,126 @@
         .connect-item:hover .fa-mug-hot,
         .connect-item:hover .fa-matrix {
             color: #0a192f !important;
+        }
+
+        /* ===== CONTACT PAGE ===== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            padding: 20px 0 40px;
+            align-items: start;
+        }
+
+        .contact-social h3,
+        .contact-form h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .contact-social .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .contact-social .social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            transition: all 0.25s;
+            color: #e4e4e7;
+            font-weight: 500;
+        }
+
+        .contact-social .social-link:hover {
+            background: #FF6000;
+            border-color: #FF6000;
+            color: #0a192f;
+            transform: translateY(-2px);
+        }
+
+        .contact-social .social-link i {
+            font-size: 22px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .contact-social .social-link .fa-youtube { color: #FF0000; }
+        .contact-social .social-link .fa-discord { color: #5865F2; }
+        .contact-social .social-link .fa-twitter { color: #000000; }
+        .contact-social .social-link .fa-instagram { color: #E4405F; }
+        .contact-social .social-link .fa-github { color: #ffffff; }
+        .contact-social .social-link .fa-docker { color: #2496ED; }
+        .contact-social .social-link .fa-mug-hot { color: #FF813F; }
+        .contact-social .social-link .fa-matrix { color: #0DBD8B; }
+
+        .contact-social .social-link:hover i {
+            color: #0a192f !important;
+        }
+
+        .contact-social .contact-email {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            color: #94a3b8;
+        }
+
+        .contact-social .contact-email i {
+            color: #FF6000;
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF6000;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group .btn {
+            width: 100%;
+            justify-content: center;
         }
 
         /* ===== FOOTER ===== */
@@ -510,9 +531,13 @@
                 font-size: 2.6rem;
             }
 
-            .video-grid {
+            .contact-wrapper {
                 grid-template-columns: 1fr;
-                gap: 18px;
+                gap: 32px;
+            }
+
+            .contact-social .social-grid {
+                grid-template-columns: 1fr 1fr;
             }
 
             .footer {
@@ -544,8 +569,8 @@
                 font-size: 0.75rem;
             }
 
-            .video-card .thumbnail .video-title {
-                font-size: 14px;
+            .contact-social .social-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -565,16 +590,15 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a data-page="home">Info</a></li>
-                <li><a data-page="videos">Videos</a></li>
-                <li><a data-page="connect">Connect</a></li>
-                <li><a data-page="connect" class="nav-cta">Join Discord</a></li>
+                <li><a data-page="home">Home</a></li>
+                <li><a data-page="contact">Contact</a></li>
+                <li><a data-page="contact" class="nav-cta">Join Discord</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- ============================================================ -->
-    <!-- ===== PAGE: INFO (HOME) ===== -->
+    <!-- ===== PAGE: HOME ===== -->
     <!-- ============================================================ -->
     <section class="page-section active" id="page-home">
         <div class="hero">
@@ -588,17 +612,17 @@
                     <a href="https://youtube.com/@ximilnet" class="btn btn-primary">
                         <i class="fab fa-youtube"></i> Watch on YouTube
                     </a>
-                    <a class="btn btn-secondary" data-page="videos" style="cursor:pointer;">
-                        <i class="fas fa-play-circle"></i> Videos
+                    <a data-page="contact" class="btn btn-secondary" style="cursor:pointer;">
+                        <i class="fas fa-envelope"></i> Contact
                     </a>
-                    <a class="btn btn-outline" data-page="connect" style="cursor:pointer;">
+                    <a data-page="contact" class="btn btn-outline" style="cursor:pointer;">
                         <i class="fab fa-discord"></i> Join Discord
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Connect section (also on info page) -->
+        <!-- Connect section on Home page -->
         <div class="container" style="padding-top: 20px;">
             <div style="text-align: center; padding: 30px 0 10px;">
                 <h2 style="font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px;">Connect with the Community</h2>
@@ -643,343 +667,69 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- ===== PAGE: VIDEOS ===== -->
+    <!-- ===== PAGE: CONTACT ===== -->
     <!-- ============================================================ -->
-    <section class="page-section" id="page-videos">
+    <section class="page-section" id="page-contact">
         <div class="container">
             <div class="section-header">
-                <h2>Videos</h2>
-                <p>Watch my latest tutorials and guides on YouTube</p>
-            </div>
-
-            <div class="video-grid">
-                <!-- Video 1 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Proxmox</span>
-                        <div class="video-title">WireGuard Proxmox Setup 2026</div>
-                        <span class="duration">6:28</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Self-host YOUR own VPN: WireGuard + Proxmox Tutorial</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 19</span>
-                            <span><i class="far fa-clock"></i> 5 dni temu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 2 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Jellyfin</span>
-                        <div class="video-title">Ultimate Jellyfin Settings (6:50)</div>
-                        <span class="duration">6:50</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Best Jellyfin Settings to Supercharge Your Media Server (2026)</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 466</span>
-                            <span><i class="far fa-clock"></i> 10 dni temu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 3 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Docker</span>
-                        <div class="video-title">Easy Docker Setup 2026</div>
-                        <span class="duration">8:00</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Docker + Proxmox: Easy Setup Guide</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> --</span>
-                            <span><i class="far fa-clock"></i> --</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 4 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Proxmox</span>
-                        <div class="video-title">STEP BY STEP INSTALL 2026</div>
-                        <span class="duration">11:56</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">DON'T SKIP BIOS! Proxmox Complete Install Guide</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> --</span>
-                            <span><i class="far fa-clock"></i> --</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 5 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Ultimate</span>
-                        <div class="video-title">Ultimate Media Server: Jellyfin + Proxmox</div>
-                        <span class="duration">--</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">The Ultimate Media Server: Jellyfin + Proxmox (2026 Guide)</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 2 tys.</span>
-                            <span><i class="far fa-clock"></i> 3 tyg. temu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 6 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Arch Linux</span>
-                        <div class="video-title">Stop Using Windows: Arch Linux on ThinkPad</div>
-                        <span class="duration">--</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Stop Using Windows: Arch Linux on ThinkPad Guide</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 622</span>
-                            <span><i class="far fa-clock"></i> 1 mies. temu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 7 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Proxmox</span>
-                        <div class="video-title">Proxmox Install Guide 2026 (don't skip Bios)</div>
-                        <span class="duration">--</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Proxmox - Complete Installation Guide 2026</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 566</span>
-                            <span><i class="far fa-clock"></i> 1 mies. temu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 8 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Updates</span>
-                        <div class="video-title">GET UPDATES FOR FREE!</div>
-                        <span class="duration">3:37</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">NOT PAYING? Get Proxmox Updates for Free!</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> --</span>
-                            <span><i class="far fa-clock"></i> --</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 9 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Security</span>
-                        <div class="video-title">SET 2FA SECURELY</div>
-                        <span class="duration">5:24</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Set 2FA Securely on Proxmox</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> --</span>
-                            <span><i class="far fa-clock"></i> --</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 10 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Proxmox</span>
-                        <div class="video-title">Understand users correctly</div>
-                        <span class="duration">8:24</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Understand Proxmox Users Correctly</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> --</span>
-                            <span><i class="far fa-clock"></i> --</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 11 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Proxmox</span>
-                        <div class="video-title">Fix Proxmox No Subscription Warning</div>
-                        <span class="duration">--</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Fix Proxmox No Subscription Warning – Proxmox 9 (2026)</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 119</span>
-                            <span><i class="far fa-clock"></i> 1 mies. temu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 12 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Security</span>
-                        <div class="video-title">Securing Proxmox: 2FA & MFA Setup</div>
-                        <span class="duration">--</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Securing Proxmox: 2FA & MFA Setup Guide (2026)</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 103</span>
-                            <span><i class="far fa-clock"></i> 1 mies. temu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 13 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Proxmox</span>
-                        <div class="video-title">Creating and managing users in Proxmox</div>
-                        <span class="duration">--</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Creating and managing users in Proxmox (2026)</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 65</span>
-                            <span><i class="far fa-clock"></i> 1 mies. temu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 14 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Inspiration</span>
-                        <div class="video-title">Why should I homeschool? Just Start!</div>
-                        <span class="duration">4:42</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Why should I homeschool? Just Start!</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> --</span>
-                            <span><i class="far fa-clock"></i> --</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Video 15 -->
-                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
-                    <div class="thumbnail">
-                        <div class="big-icon"><i class="fab fa-youtube"></i></div>
-                        <span class="title-tag">Homelab</span>
-                        <div class="video-title">Everything Changed When I Built a HomeLab</div>
-                        <span class="duration">--</span>
-                    </div>
-                    <div class="info">
-                        <div class="title">Everything Changed When I Built a HomeLab</div>
-                        <div class="meta">
-                            <span><i class="far fa-eye"></i> 104</span>
-                            <span><i class="far fa-clock"></i> 1 mies. temu</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 16px;">
-                <a href="https://youtube.com/@ximilnet" class="btn btn-primary" target="_blank">
-                    <i class="fab fa-youtube"></i> View All on YouTube
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== PAGE: CONNECT ===== -->
-    <!-- ============================================================ -->
-    <section class="page-section" id="page-connect">
-        <div class="container">
-            <div class="section-header">
-                <h2>Connect with the Community</h2>
+                <h2>Contact</h2>
                 <p>Follow me, reach out, or join the conversation</p>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 20px 0 40px; align-items: start;">
+            <div class="contact-wrapper">
                 <!-- LEFT: Social Links -->
-                <div>
-                    <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 16px;">Find me online</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
-                        <a href="https://www.youtube.com/@ximilnet" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fab fa-youtube" style="font-size: 22px; width: 30px; text-align: center; color: #FF0000;"></i> YouTube
+                <div class="contact-social">
+                    <h3>Find me online</h3>
+                    <div class="social-grid">
+                        <a href="https://www.youtube.com/@ximilnet" target="_blank" class="social-link">
+                            <i class="fab fa-youtube"></i> YouTube
                         </a>
-                        <a href="https://discord.gg/yeR26bes" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fab fa-discord" style="font-size: 22px; width: 30px; text-align: center; color: #5865F2;"></i> Discord
+                        <a href="https://discord.gg/yeR26bes" target="_blank" class="social-link">
+                            <i class="fab fa-discord"></i> Discord
                         </a>
-                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fab fa-twitter" style="font-size: 22px; width: 30px; text-align: center; color: #000000;"></i> Twitter
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i> Twitter
                         </a>
-                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fab fa-instagram" style="font-size: 22px; width: 30px; text-align: center; color: #E4405F;"></i> Instagram
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i> Instagram
                         </a>
-                        <a href="https://github.com/ximilnet/" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fab fa-github" style="font-size: 22px; width: 30px; text-align: center; color: #ffffff;"></i> GitHub
+                        <a href="https://github.com/ximilnet/" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i> GitHub
                         </a>
-                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fab fa-docker" style="font-size: 22px; width: 30px; text-align: center; color: #2496ED;"></i> Docker Hub
+                        <a href="#" class="social-link">
+                            <i class="fab fa-docker"></i> Docker Hub
                         </a>
-                        <a href="https://ko-fi.com/ximilnet" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fas fa-mug-hot" style="font-size: 22px; width: 30px; text-align: center; color: #FF813F;"></i> Support the servers
+                        <a href="https://ko-fi.com/ximilnet" target="_blank" class="social-link">
+                            <i class="fas fa-mug-hot"></i> Support the servers
                         </a>
-                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fas fa-matrix" style="font-size: 22px; width: 30px; text-align: center; color: #0DBD8B;"></i> Matrix Chat
+                        <a href="#" class="social-link">
+                            <i class="fas fa-matrix"></i> Matrix Chat
                         </a>
                     </div>
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; color: #94a3b8;">
-                        <i class="fas fa-envelope" style="color: #FF6000; font-size: 20px;"></i>
+
+                    <div class="contact-email">
+                        <i class="fas fa-envelope"></i>
                         <span>hello@ximilnet.com</span>
                     </div>
                 </div>
 
                 <!-- RIGHT: Contact Form -->
-                <div>
-                    <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 16px;">Send a message</h3>
+                <div class="contact-form">
+                    <h3>Send a message</h3>
                     <form>
-                        <div style="margin-bottom: 18px;">
-                            <label style="display: block; font-weight: 600; font-size: 14px; color: #94a3b8; margin-bottom: 6px;">Your name</label>
-                            <input type="text" placeholder="Enter your name" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: #fff; font-size: 15px; font-family: inherit; transition: border 0.2s;" />
+                        <div class="form-group">
+                            <label for="name">Your name</label>
+                            <input type="text" id="name" placeholder="Enter your name" />
                         </div>
-                        <div style="margin-bottom: 18px;">
-                            <label style="display: block; font-weight: 600; font-size: 14px; color: #94a3b8; margin-bottom: 6px;">Email address</label>
-                            <input type="email" placeholder="Enter your email" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: #fff; font-size: 15px; font-family: inherit; transition: border 0.2s;" />
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" placeholder="Enter your email" />
                         </div>
-                        <div style="margin-bottom: 18px;">
-                            <label style="display: block; font-weight: 600; font-size: 14px; color: #94a3b8; margin-bottom: 6px;">Message</label>
-                            <textarea placeholder="What would you like to say?" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: #fff; font-size: 15px; font-family: inherit; transition: border 0.2s; resize: vertical; min-height: 120px;"></textarea>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="What would you like to say?"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </form>
@@ -1003,7 +753,6 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // ===== PAGE NAVIGATION =====
         function showPage(pageId) {
             // Hide all pages
             document.querySelectorAll('.page-section').forEach(function(section) {
@@ -1020,10 +769,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
             // Close mobile menu
-            document.getElementById('navLinks').classList.remove('open');
+            var navLinks = document.getElementById('navLinks');
+            if (navLinks) {
+                navLinks.classList.remove('open');
+            }
         }
 
-        // ===== SETUP NAVIGATION =====
         document.addEventListener('DOMContentLoaded', function() {
             // Nav links
             var navLinks = document.querySelectorAll('.nav-links a[data-page]');
@@ -1047,10 +798,12 @@
 
             // Hamburger menu
             var hamburger = document.getElementById('hamburgerBtn');
-            hamburger.addEventListener('click', function() {
-                var nav = document.getElementById('navLinks');
-                nav.classList.toggle('open');
-            });
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    var nav = document.getElementById('navLinks');
+                    nav.classList.toggle('open');
+                });
+            }
         });
     </script>
 
