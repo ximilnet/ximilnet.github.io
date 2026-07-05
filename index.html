@@ -89,6 +89,7 @@
             color: #94a3b8;
             transition: color 0.2s;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -564,10 +565,10 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="#" onclick="showPage('home')">Info</a></li>
-                <li><a href="#" onclick="showPage('videos')">Videos</a></li>
-                <li><a href="#" onclick="showPage('connect')">Connect</a></li>
-                <li><a href="#" onclick="showPage('connect')" class="nav-cta">Join Discord</a></li>
+                <li><a onclick="showPage('home')" style="cursor:pointer;">Info</a></li>
+                <li><a onclick="showPage('videos')" style="cursor:pointer;">Videos</a></li>
+                <li><a onclick="showPage('connect')" style="cursor:pointer;">Connect</a></li>
+                <li><a onclick="showPage('connect')" class="nav-cta" style="cursor:pointer;">Join Discord</a></li>
             </ul>
         </div>
     </nav>
@@ -587,10 +588,10 @@
                     <a href="https://youtube.com/@ximilnet" class="btn btn-primary">
                         <i class="fab fa-youtube"></i> Watch on YouTube
                     </a>
-                    <a href="#" onclick="showPage('videos')" class="btn btn-secondary">
+                    <a onclick="showPage('videos')" class="btn btn-secondary" style="cursor:pointer;">
                         <i class="fas fa-play-circle"></i> Videos
                     </a>
-                    <a href="#" onclick="showPage('connect')" class="btn btn-outline">
+                    <a onclick="showPage('connect')" class="btn btn-outline" style="cursor:pointer;">
                         <i class="fab fa-discord"></i> Join Discord
                     </a>
                 </div>
@@ -653,7 +654,7 @@
 
             <div class="video-grid">
                 <!-- Video 1 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Proxmox</span>
@@ -670,7 +671,7 @@
                 </div>
 
                 <!-- Video 2 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Jellyfin</span>
@@ -687,7 +688,7 @@
                 </div>
 
                 <!-- Video 3 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Docker</span>
@@ -704,7 +705,7 @@
                 </div>
 
                 <!-- Video 4 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Proxmox</span>
@@ -721,7 +722,7 @@
                 </div>
 
                 <!-- Video 5 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Ultimate</span>
@@ -738,7 +739,7 @@
                 </div>
 
                 <!-- Video 6 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Arch Linux</span>
@@ -755,7 +756,7 @@
                 </div>
 
                 <!-- Video 7 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Proxmox</span>
@@ -772,7 +773,7 @@
                 </div>
 
                 <!-- Video 8 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Updates</span>
@@ -789,7 +790,7 @@
                 </div>
 
                 <!-- Video 9 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Security</span>
@@ -806,7 +807,7 @@
                 </div>
 
                 <!-- Video 10 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Proxmox</span>
@@ -823,7 +824,7 @@
                 </div>
 
                 <!-- Video 11 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Proxmox</span>
@@ -840,7 +841,7 @@
                 </div>
 
                 <!-- Video 12 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Security</span>
@@ -857,7 +858,7 @@
                 </div>
 
                 <!-- Video 13 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Proxmox</span>
@@ -874,7 +875,7 @@
                 </div>
 
                 <!-- Video 14 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Inspiration</span>
@@ -891,7 +892,7 @@
                 </div>
 
                 <!-- Video 15 -->
-                <div class="video-card">
+                <div class="video-card" onclick="window.open('https://youtube.com/@ximilnet','_blank')">
                     <div class="thumbnail">
                         <div class="big-icon"><i class="fab fa-youtube"></i></div>
                         <span class="title-tag">Homelab</span>
@@ -909,7 +910,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 16px;">
-                <a href="https://youtube.com/@ximilnet" class="btn btn-primary">
+                <a href="https://youtube.com/@ximilnet" class="btn btn-primary" target="_blank">
                     <i class="fab fa-youtube"></i> View All on YouTube
                 </a>
             </div>
@@ -931,16 +932,10 @@
                 <div>
                     <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 16px;">Find me online</h3>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px;">
-                        <a href="https://www.youtube.com/@ximilnet" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
+                        <a href="https://www.youtube.com/@ximilnet" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
                             <i class="fab fa-youtube" style="font-size: 22px; width: 30px; text-align: center; color: #FF0000;"></i> YouTube
                         </a>
-                        <a href="https://discord.gg/yeR26bes" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
+                        <a href="https://discord.gg/yeR26bes" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
                             <i class="fab fa-discord" style="font-size: 22px; width: 30px; text-align: center; color: #5865F2;"></i> Discord
                         </a>
-                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fab fa-twitter" style="font-size: 22px; width: 30px; text-align: center; color: #000000;"></i> Twitter
-                        </a>
-                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
-                            <i class="fab fa-instagram" style="font-size: 22px; width: 30px; text-align: center; color: #E4405F;"></i> Instagram
-                        </a>
-                        <a href="https://github.com/ximilnet/" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.
+                        <a href="#" style="display: flex;
