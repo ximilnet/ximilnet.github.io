@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XimilNet — Privacy & Homelab</title>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a192f;
+            color: #e4e4e7;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            position: sticky;
+            top: 0;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #FF6000;
+        }
+
+        .logo small {
+            font-size: 12px;
+            font-weight: 400;
+            color: #64748b;
+            margin-left: 8px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FF6000;
+            transition: width 0.2s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: #FF6000;
+            color: #0a192f !important;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #e65a00;
+            color: #0a192f !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* ===== HERO / INFO SECTION ===== */
+        .hero {
+            padding: 60px 0 40px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .hero h1 .highlight {
+            color: #FF6000;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 650px;
+            margin-bottom: 28px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #FF6000;
+            color: #0a192f;
+        }
+
+        .btn-primary:hover {
+            background: #e65a00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 96, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #FF6000;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-stats .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stats .stat .number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .hero-stats .stat .label {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        /* ===== CONNECT SECTION ===== */
+        .connect-section {
+            padding: 50px 0 60px;
+            text-align: center;
+        }
+
+        .connect-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .connect-section .subtitle {
+            color: #94a3b8;
+            font-size: 18px;
+            margin-bottom: 36px;
+        }
+
+        .connect-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .connect-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 36px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #e4e4e7;
+            transition: all 0.25s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-width: 180px;
+            justify-content: center;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        /* ===== ORANGE HIGHLIGHT ON HOVER (like Discord button) ===== */
+        .connect-item:hover {
+            background: #FF6000 !important;
+            border-color: #FF6000 !important;
+            color: #0a192f !important;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 96, 0, 0.4);
+        }
+
+        .connect-item:hover i {
+            color: #0a192f !important;
+            transform: scale(1.1);
+        }
+
+        /* ===== OFFICIAL ICON COLORS ===== */
+        .connect-item i {
+            font-size: 24px;
+            width: 30px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .connect-item .fa-youtube {
+            color: #FF0000;
+        }
+        .connect-item .fa-discord {
+            color: #5865F2;
+        }
+        .connect-item .fa-twitter {
+            color: #000000;
+        }
+        .connect-item .fa-instagram {
+            color: #E4405F;
+        }
+        .connect-item .fa-linkedin-in {
+            color: #0A66C2;
+        }
+        .connect-item .fa-github {
+            color: #ffffff;
+        }
+        .connect-item .fa-docker {
+            color: #2496ED;
+        }
+        .connect-item .fa-mug-hot {
+            color: #FF813F;
+        }
+        .connect-item .fa-patreon {
+            color: #F96854;
+        }
+        .connect-item .fa-graduation-cap {
+            color: #A435F0;
+        }
+        .connect-item .fa-matrix {
+            color: #0DBD8B;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 30px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .footer .socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer .socials a {
+            color: #64748b;
+            transition: color 0.2s;
+            font-size: 18px;
+        }
+
+        .footer .socials a:hover {
+            color: #FF6000;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 16px 0;
+                gap: 12px;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+                margin-top: 12px;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+            }
+
+            .nav-cta {
+                align-self: flex-start;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .connect-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .connect-item {
+                width: 100%;
+                min-width: unset;
+                padding: 16px 24px;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+
+            .hero-stats .stat {
+                flex: 1 1 40%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                ximil<span>net</span>
+                <small>privacy · homelab</small>
+            </div>
+
+            <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Info</a></li>
+                <li><a href="#connect">Connect</a></li>
+                <li><a href="#connect" class="nav-cta">Join Discord</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== INFO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Building privacy-first <span class="highlight">homelabs</span> for everyone</h1>
+            <p>
+                Your trusted resource for building, managing, and optimizing home labs,
+                NAS systems, and self-hosted solutions — all with privacy at the core.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://youtube.com/@ximilnet" class="btn btn-primary">
+                    <i class="fab fa-youtube"></i> Watch on YouTube
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-book"></i> Read the Blog
+                </a>
+                <a href="#" class="btn btn-outline">
+                    <i class="fab fa-discord"></i> Join Discord
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="number" id="subscriberCount">--</span>
+                    <span class="label">Subscribers</span>
+                </div>
+                <div class="stat">
+                    <span class="number" id="videoCount">--</span>
+                    <span class="label">Videos</span>
+                </div>
+                <div class="stat">
+                    <span class="number" id="viewCount">--</span>
+                    <span class="label">Total Views</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONNECT SECTION ===== -->
+    <section class="connect-section" id="connect">
+        <div class="container">
+            <h2>Connect with the Community</h2>
+            <p class="subtitle">Follow me on your favorite platforms</p>
+
+            <div class="connect-grid">
+                <a href="https://youtube.com/@ximilnet" class="connect-item">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fab fa-docker"></i> Docker Hub
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fas fa-mug-hot"></i> Buy Me a Coffee
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fab fa-patreon"></i> Patreon
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fas fa-graduation-cap"></i> Udemy Course
+                </a>
+                <a href="#" class="connect-item">
+                    <i class="fas fa-matrix"></i> Matrix Chat
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="container">
+        <div class="footer">
+            <span>&copy; 2026 ximilnet — built with 🔒 in the homelab</span>
+            <div class="socials">
+                <a href="https://youtube.com/@ximilnet" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Mastodon"><i class="fab fa-mastodon"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('open');
+        }
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+
+        // === YOUTUBE API: FETCH LIVE STATS ===
+        // REPLACE 'YOUR_API_KEY' AND 'YOUR_CHANNEL_ID' WITH YOUR OWN.
+        const API_KEY = 'YOUR_API_KEY';
+        const CHANNEL_ID = 'YOUR_CHANNEL_ID';
+
+        if (API_KEY !== 'YOUR_API_KEY' && CHANNEL_ID !== 'YOUR_CHANNEL_ID') {
+            fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.items && data.items.length > 0) {
+                        const stats = data.items[0].statistics;
+                        document.getElementById('subscriberCount').textContent = parseInt(stats.subscriberCount).toLocaleString();
+                        document.getElementById('videoCount').textContent = parseInt(stats.videoCount).toLocaleString();
+                        document.getElementById('viewCount').textContent = parseInt(stats.viewCount).toLocaleString();
+                    } else {
+                        console.error('No channel data found. Check your Channel ID.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching YouTube stats:', error);
+                    document.getElementById('subscriberCount').textContent = 'N/A';
+                    document.getElementById('videoCount').textContent = 'N/A';
+                    document.getElementById('viewCount').textContent = 'N/A';
+                });
+        } else {
+            console.log('YouTube API key or Channel ID not set.');
+            document.getElementById('subscriberCount').textContent = 'N/A';
+            document.getElementById('videoCount').textContent = 'N/A';
+            document.getElementById('viewCount').textContent = 'N/A';
+        }
+    </script>
+
+</body>
+</html>
