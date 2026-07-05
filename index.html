@@ -683,7 +683,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- ===== PAGE: CONTACT (with working Formspree form) ===== -->
+    <!-- ===== PAGE: CONTACT ===== -->
     <!-- ============================================================ -->
     <section class="page-section" id="page-contact">
         <div class="container">
@@ -729,7 +729,7 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: WORKING Contact Form -->
+                <!-- RIGHT: Working Contact Form -->
                 <div class="contact-form">
                     <h3>Send a message</h3>
 
@@ -836,8 +836,6 @@
 
             if (form) {
                 form.addEventListener('submit', function(e) {
-                    // We don't prevent default — Formspree handles the redirect
-                    // But we can show a loading state
                     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                     submitBtn.disabled = true;
                 });
@@ -851,7 +849,6 @@
                     var cleanUrl = window.location.href.replace(/\?success=true/, '');
                     window.history.replaceState({}, document.title, cleanUrl);
                 }
-                // Reset button state after success
                 if (submitBtn) {
                     submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
                     submitBtn.disabled = false;
