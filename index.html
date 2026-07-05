@@ -451,6 +451,22 @@
             justify-content: center;
         }
 
+        /* Formspree success message */
+        .form-success {
+            display: none;
+            background: rgba(46, 213, 115, 0.15);
+            border: 1px solid #2ed573;
+            color: #2ed573;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
         /* ===== FOOTER ===== */
         .footer {
             padding: 30px 0 40px;
@@ -667,7 +683,7 @@
     </section>
 
     <!-- ============================================================ -->
-    <!-- ===== PAGE: CONTACT ===== -->
+    <!-- ===== PAGE: CONTACT (with working Formspree form) ===== -->
     <!-- ============================================================ -->
     <section class="page-section" id="page-contact">
         <div class="container">
@@ -713,23 +729,30 @@
                     </div>
                 </div>
 
-                <!-- RIGHT: Contact Form -->
+                <!-- RIGHT: WORKING Contact Form -->
                 <div class="contact-form">
                     <h3>Send a message</h3>
-                    <form>
+
+                    <!-- Success message (hidden by default) -->
+                    <div id="form-success" class="form-success">
+                        <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.
+                    </div>
+
+                    <!-- The form -->
+                    <form id="contact-form" action="https://formspree.io/f/xkolypdy" method="POST">
                         <div class="form-group">
                             <label for="name">Your name</label>
-                            <input type="text" id="name" placeholder="Enter your name" />
+                            <input type="text" id="name" name="name" placeholder="Enter your name" required />
                         </div>
                         <div class="form-group">
                             <label for="email">Email address</label>
-                            <input type="email" id="email" placeholder="Enter your email" />
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required />
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" placeholder="What would you like to say?"></textarea>
+                            <textarea id="message" name="message" placeholder="What would you like to say?" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
                             <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </form>
@@ -753,6 +776,7 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
+        // ===== PAGE NAVIGATION =====
         function showPage(pageId) {
             // Hide all pages
             document.querySelectorAll('.page-section').forEach(function(section) {
@@ -803,6 +827,35 @@
                     var nav = document.getElementById('navLinks');
                     nav.classList.toggle('open');
                 });
+            }
+
+            // ===== FORMSPREE FORM HANDLING =====
+            var form = document.getElementById('contact-form');
+            var successDiv = document.getElementById('form-success');
+            var submitBtn = document.getElementById('submit-btn');
+
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    // We don't prevent default — Formspree handles the redirect
+                    // But we can show a loading state
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                });
+            }
+
+            // Check if the URL has the success parameter from Formspree
+            if (window.location.search.includes('success=true')) {
+                successDiv.classList.add('show');
+                // Remove the parameter from URL without refreshing
+                if (window.history && window.history.replaceState) {
+                    var cleanUrl = window.location.href.replace(/\?success=true/, '');
+                    window.history.replaceState({}, document.title, cleanUrl);
+                }
+                // Reset button state after success
+                if (submitBtn) {
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    submitBtn.disabled = false;
+                }
             }
         });
     </script>
