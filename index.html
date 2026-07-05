@@ -221,7 +221,7 @@
             border-color: #FF6000;
         }
 
-        /* ===== CONNECT SECTION ===== */
+        /* ===== CONNECT SECTION — BIG SQUARE BOXES ===== */
         .connect-section {
             padding: 50px 0 60px;
             text-align: center;
@@ -241,51 +241,65 @@
         }
 
         .connect-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             max-width: 900px;
             margin: 0 auto;
         }
 
         .connect-item {
-            display: inline-flex;
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 14px;
-            padding: 18px 36px;
-            border-radius: 8px;
-            font-size: 16px;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 2rem 0.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            font-size: 0.95rem;
             font-weight: 500;
             color: #e4e4e7;
-            transition: all 0.25s;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            min-width: 180px;
-            justify-content: center;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            background: rgba(255, 255, 255, 0.04);
+            aspect-ratio: 1 / 1;
+            min-height: 140px;
         }
 
+        .connect-item i {
+            font-size: 3.2rem;
+            transition: transform 0.25s;
+            line-height: 1;
+        }
+
+        .connect-item span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            letter-spacing: 0.01em;
+        }
+
+        /* --- ORANGE HIGHLIGHT ON HOVER --- */
         .connect-item:hover {
             background: #FF6000 !important;
             border-color: #FF6000 !important;
             color: #0a192f !important;
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(255, 96, 0, 0.4);
+            transform: scale(1.04) translateY(-6px);
+            box-shadow: 0 16px 40px rgba(255, 96, 0, 0.35);
         }
 
         .connect-item:hover i {
-            color: #0a192f !important;
             transform: scale(1.1);
+            color: #0a192f !important;
         }
 
-        .connect-item i {
-            font-size: 24px;
-            width: 30px;
-            text-align: center;
-            transition: transform 0.2s;
+        .connect-item:hover span {
+            color: #0a192f !important;
         }
 
+        /* brand colors for icons (when not hovered) */
         .connect-item .fa-youtube { color: #FF0000; }
         .connect-item .fa-discord { color: #5865F2; }
         .connect-item .fa-twitter { color: #000000; }
@@ -295,6 +309,7 @@
         .connect-item .fa-mug-hot { color: #FF813F; }
         .connect-item .fa-matrix { color: #0DBD8B; }
 
+        /* override: on hover, all icons become dark */
         .connect-item:hover .fa-youtube,
         .connect-item:hover .fa-discord,
         .connect-item:hover .fa-twitter,
@@ -373,14 +388,17 @@
             }
 
             .connect-grid {
-                flex-direction: column;
-                align-items: center;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
             }
 
             .connect-item {
-                width: 100%;
-                min-width: unset;
-                padding: 16px 24px;
+                min-height: 120px;
+                padding: 1.5rem 0.25rem;
+            }
+
+            .connect-item i {
+                font-size: 2.6rem;
             }
 
             .footer {
@@ -392,6 +410,24 @@
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 26px;
+            }
+
+            .connect-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+
+            .connect-item {
+                min-height: 100px;
+                border-radius: 16px;
+            }
+
+            .connect-item i {
+                font-size: 2.2rem;
+            }
+
+            .connect-item span {
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -440,7 +476,7 @@
         </div>
     </section>
 
-    <!-- ===== CONNECT SECTION ===== -->
+    <!-- ===== CONNECT SECTION — BIG SQUARE BOXES (4 in a row) ===== -->
     <section class="connect-section" id="connect">
         <div class="container">
             <h2>Connect with the Community</h2>
@@ -448,28 +484,36 @@
 
             <div class="connect-grid">
                 <a href="https://www.youtube.com/@ximilnet" class="connect-item">
-                    <i class="fab fa-youtube"></i> YouTube
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
                 </a>
                 <a href="https://discord.gg/yeR26bes" class="connect-item">
-                    <i class="fab fa-discord"></i> Discord
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
                 </a>
                 <a href="#" class="connect-item">
-                    <i class="fab fa-twitter"></i> Twitter
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
                 </a>
                 <a href="#" class="connect-item">
-                    <i class="fab fa-instagram"></i> Instagram
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
                 </a>
                 <a href="https://github.com/ximilnet/" class="connect-item">
-                    <i class="fab fa-github"></i> GitHub
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
                 </a>
                 <a href="#" class="connect-item">
-                    <i class="fab fa-docker"></i> Docker Hub
+                    <i class="fab fa-docker"></i>
+                    <span>Docker Hub</span>
                 </a>
                 <a href="https://ko-fi.com/ximilnet" class="connect-item">
-                    <i class="fas fa-mug-hot"></i> Support the servers
+                    <i class="fas fa-mug-hot"></i>
+                    <span>Support the servers</span>
                 </a>
                 <a href="#" class="connect-item">
-                    <i class="fas fa-matrix"></i> Matrix Chat
+                    <i class="fas fa-matrix"></i>
+                    <span>Matrix Chat</span>
                 </a>
             </div>
         </div>
