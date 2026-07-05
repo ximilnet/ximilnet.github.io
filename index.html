@@ -214,28 +214,58 @@
             border-color: #FF6000;
         }
 
-        .hero-stats {
+        /* ===== HERO STATS REPLACED WITH BIG ICON LINKS ===== */
+        .hero-links {
             display: flex;
-            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px 40px;
             margin-top: 32px;
             padding-top: 32px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .hero-stats .stat {
+        .hero-link-item {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: #94a3b8;
+            transition: color 0.2s, transform 0.2s;
+            font-size: 14px;
+            font-weight: 500;
         }
 
-        .hero-stats .stat .number {
-            font-size: 24px;
-            font-weight: 700;
-            color: #fff;
+        .hero-link-item i {
+            font-size: 40px; /* big icons */
+            transition: transform 0.2s, color 0.2s;
         }
 
-        .hero-stats .stat .label {
-            font-size: 13px;
-            color: #64748b;
+        .hero-link-item:hover {
+            color: #FF6000;
+            transform: translateY(-4px);
+        }
+
+        .hero-link-item:hover i {
+            transform: scale(1.1);
+            color: #FF6000;
+        }
+
+        /* individual brand colors (optional) */
+        .hero-link-item .fa-youtube { color: #FF0000; }
+        .hero-link-item .fa-blog { color: #00b894; }
+        .hero-link-item .fa-wiki { color: #6c5ce7; }
+        .hero-link-item .fa-github { color: #ffffff; }
+        .hero-link-item .fa-discord { color: #5865F2; }
+        .hero-link-item .fa-docker { color: #2496ED; }
+
+        .hero-link-item:hover .fa-youtube,
+        .hero-link-item:hover .fa-blog,
+        .hero-link-item:hover .fa-wiki,
+        .hero-link-item:hover .fa-github,
+        .hero-link-item:hover .fa-discord,
+        .hero-link-item:hover .fa-docker {
+            color: #FF6000 !important;
         }
 
         /* ===== CONNECT SECTION ===== */
@@ -283,7 +313,6 @@
             background: rgba(255, 255, 255, 0.04);
         }
 
-        /* ===== ORANGE HIGHLIGHT ON HOVER (like Discord button) ===== */
         .connect-item:hover {
             background: #FF6000 !important;
             border-color: #FF6000 !important;
@@ -297,7 +326,6 @@
             transform: scale(1.1);
         }
 
-        /* ===== OFFICIAL ICON COLORS ===== */
         .connect-item i {
             font-size: 24px;
             width: 30px;
@@ -305,39 +333,17 @@
             transition: transform 0.2s;
         }
 
-        .connect-item .fa-youtube {
-            color: #FF0000;
-        }
-        .connect-item .fa-discord {
-            color: #5865F2;
-        }
-        .connect-item .fa-twitter {
-            color: #000000;
-        }
-        .connect-item .fa-instagram {
-            color: #E4405F;
-        }
-        .connect-item .fa-linkedin-in {
-            color: #0A66C2;
-        }
-        .connect-item .fa-github {
-            color: #ffffff;
-        }
-        .connect-item .fa-docker {
-            color: #2496ED;
-        }
-        .connect-item .fa-mug-hot {
-            color: #FF813F;
-        }
-        .connect-item .fa-patreon {
-            color: #F96854;
-        }
-        .connect-item .fa-graduation-cap {
-            color: #A435F0;
-        }
-        .connect-item .fa-matrix {
-            color: #0DBD8B;
-        }
+        .connect-item .fa-youtube { color: #FF0000; }
+        .connect-item .fa-discord { color: #5865F2; }
+        .connect-item .fa-twitter { color: #000000; }
+        .connect-item .fa-instagram { color: #E4405F; }
+        .connect-item .fa-linkedin-in { color: #0A66C2; }
+        .connect-item .fa-github { color: #ffffff; }
+        .connect-item .fa-docker { color: #2496ED; }
+        .connect-item .fa-mug-hot { color: #FF813F; }
+        .connect-item .fa-patreon { color: #F96854; }
+        .connect-item .fa-graduation-cap { color: #A435F0; }
+        .connect-item .fa-matrix { color: #0DBD8B; }
 
         /* ===== FOOTER ===== */
         .footer {
@@ -405,6 +411,13 @@
                 justify-content: center;
             }
 
+            .hero-links {
+                gap: 20px;
+            }
+            .hero-link-item i {
+                font-size: 32px;
+            }
+
             .connect-grid {
                 flex-direction: column;
                 align-items: center;
@@ -426,14 +439,8 @@
             .hero h1 {
                 font-size: 26px;
             }
-
-            .hero-stats {
-                flex-wrap: wrap;
-                gap: 16px;
-            }
-
-            .hero-stats .stat {
-                flex: 1 1 40%;
+            .hero-link-item i {
+                font-size: 28px;
             }
         }
     </style>
@@ -479,19 +486,33 @@
                     <i class="fab fa-discord"></i> Join Discord
                 </a>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="number" id="subscriberCount">--</span>
-                    <span class="label">Subscribers</span>
-                </div>
-                <div class="stat">
-                    <span class="number" id="videoCount">--</span>
-                    <span class="label">Videos</span>
-                </div>
-                <div class="stat">
-                    <span class="number" id="viewCount">--</span>
-                    <span class="label">Total Views</span>
-                </div>
+
+            <!-- BIG ICON LINKS (replaces stats) -->
+            <div class="hero-links">
+                <a href="#" class="hero-link-item">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="#" class="hero-link-item">
+                    <i class="fas fa-blog"></i>
+                    <span>Blog</span>
+                </a>
+                <a href="#" class="hero-link-item">
+                    <i class="fas fa-wiki"></i>
+                    <span>Wiki</span>
+                </a>
+                <a href="#" class="hero-link-item">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="#" class="hero-link-item">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="#" class="hero-link-item">
+                    <i class="fab fa-docker"></i>
+                    <span>Docker Hub</span>
+                </a>
             </div>
         </div>
     </section>
@@ -554,55 +575,19 @@
         </div>
     </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
+    <!-- ===== JAVASCRIPT (only mobile menu toggle) ===== -->
     <script>
         function toggleMenu() {
             const nav = document.getElementById('navLinks');
             nav.classList.toggle('open');
         }
 
-        // Close menu on link click (mobile)
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('open');
             });
         });
-
-        // === YOUTUBE API: FETCH LIVE STATS ===
-        // REPLACE 'YOUR_API_KEY' AND 'YOUR_CHANNEL_ID' WITH YOUR OWN.
-        const API_KEY = 'YOUR_API_KEY';
-        const CHANNEL_ID = 'YOUR_CHANNEL_ID';
-
-        if (API_KEY !== 'YOUR_API_KEY' && CHANNEL_ID !== 'YOUR_CHANNEL_ID') {
-            fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.items && data.items.length > 0) {
-                        const stats = data.items[0].statistics;
-                        document.getElementById('subscriberCount').textContent = parseInt(stats.subscriberCount).toLocaleString();
-                        document.getElementById('videoCount').textContent = parseInt(stats.videoCount).toLocaleString();
-                        document.getElementById('viewCount').textContent = parseInt(stats.viewCount).toLocaleString();
-                    } else {
-                        console.error('No channel data found. Check your Channel ID.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching YouTube stats:', error);
-                    document.getElementById('subscriberCount').textContent = 'N/A';
-                    document.getElementById('videoCount').textContent = 'N/A';
-                    document.getElementById('viewCount').textContent = 'N/A';
-                });
-        } else {
-            console.log('YouTube API key or Channel ID not set.');
-            document.getElementById('subscriberCount').textContent = 'N/A';
-            document.getElementById('videoCount').textContent = 'N/A';
-            document.getElementById('viewCount').textContent = 'N/A';
-        }
+        // YouTube API removed completely.
     </script>
 
 </body>
