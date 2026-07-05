@@ -560,15 +560,15 @@
                 <span class="tagline">own·your·data</span>
             </div>
 
-            <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a onclick="showPage('home')" style="cursor:pointer;">Info</a></li>
-                <li><a onclick="showPage('videos')" style="cursor:pointer;">Videos</a></li>
-                <li><a onclick="showPage('connect')" style="cursor:pointer;">Connect</a></li>
-                <li><a onclick="showPage('connect')" class="nav-cta" style="cursor:pointer;">Join Discord</a></li>
+                <li><a data-page="home">Info</a></li>
+                <li><a data-page="videos">Videos</a></li>
+                <li><a data-page="connect">Connect</a></li>
+                <li><a data-page="connect" class="nav-cta">Join Discord</a></li>
             </ul>
         </div>
     </nav>
@@ -588,10 +588,10 @@
                     <a href="https://youtube.com/@ximilnet" class="btn btn-primary">
                         <i class="fab fa-youtube"></i> Watch on YouTube
                     </a>
-                    <a onclick="showPage('videos')" class="btn btn-secondary" style="cursor:pointer;">
+                    <a class="btn btn-secondary" data-page="videos" style="cursor:pointer;">
                         <i class="fas fa-play-circle"></i> Videos
                     </a>
-                    <a onclick="showPage('connect')" class="btn btn-outline" style="cursor:pointer;">
+                    <a class="btn btn-outline" data-page="connect" style="cursor:pointer;">
                         <i class="fab fa-discord"></i> Join Discord
                     </a>
                 </div>
@@ -938,4 +938,121 @@
                         <a href="https://discord.gg/yeR26bes" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
                             <i class="fab fa-discord" style="font-size: 22px; width: 30px; text-align: center; color: #5865F2;"></i> Discord
                         </a>
-                        <a href="#" style="display: flex;
+                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
+                            <i class="fab fa-twitter" style="font-size: 22px; width: 30px; text-align: center; color: #000000;"></i> Twitter
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
+                            <i class="fab fa-instagram" style="font-size: 22px; width: 30px; text-align: center; color: #E4405F;"></i> Instagram
+                        </a>
+                        <a href="https://github.com/ximilnet/" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
+                            <i class="fab fa-github" style="font-size: 22px; width: 30px; text-align: center; color: #ffffff;"></i> GitHub
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
+                            <i class="fab fa-docker" style="font-size: 22px; width: 30px; text-align: center; color: #2496ED;"></i> Docker Hub
+                        </a>
+                        <a href="https://ko-fi.com/ximilnet" target="_blank" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
+                            <i class="fas fa-mug-hot" style="font-size: 22px; width: 30px; text-align: center; color: #FF813F;"></i> Support the servers
+                        </a>
+                        <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; transition: all 0.25s; color: #e4e4e7; font-weight: 500;">
+                            <i class="fas fa-matrix" style="font-size: 22px; width: 30px; text-align: center; color: #0DBD8B;"></i> Matrix Chat
+                        </a>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; color: #94a3b8;">
+                        <i class="fas fa-envelope" style="color: #FF6000; font-size: 20px;"></i>
+                        <span>hello@ximilnet.com</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Contact Form -->
+                <div>
+                    <h3 style="font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 16px;">Send a message</h3>
+                    <form>
+                        <div style="margin-bottom: 18px;">
+                            <label style="display: block; font-weight: 600; font-size: 14px; color: #94a3b8; margin-bottom: 6px;">Your name</label>
+                            <input type="text" placeholder="Enter your name" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: #fff; font-size: 15px; font-family: inherit; transition: border 0.2s;" />
+                        </div>
+                        <div style="margin-bottom: 18px;">
+                            <label style="display: block; font-weight: 600; font-size: 14px; color: #94a3b8; margin-bottom: 6px;">Email address</label>
+                            <input type="email" placeholder="Enter your email" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: #fff; font-size: 15px; font-family: inherit; transition: border 0.2s;" />
+                        </div>
+                        <div style="margin-bottom: 18px;">
+                            <label style="display: block; font-weight: 600; font-size: 14px; color: #94a3b8; margin-bottom: 6px;">Message</label>
+                            <textarea placeholder="What would you like to say?" style="width: 100%; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); color: #fff; font-size: 15px; font-family: inherit; transition: border 0.2s; resize: vertical; min-height: 120px;"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="container">
+        <div class="footer">
+            <span>&copy; 2026 ximilnet — built with 🔒 in the homelab</span>
+            <div class="socials">
+                <a href="https://www.youtube.com/@ximilnet" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://discord.gg/yeR26bes" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://github.com/ximilnet" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== PAGE NAVIGATION =====
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(function(section) {
+                section.classList.remove('active');
+            });
+
+            // Show selected page
+            var target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('open');
+        }
+
+        // ===== SETUP NAVIGATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Nav links
+            var navLinks = document.querySelectorAll('.nav-links a[data-page]');
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var page = this.getAttribute('data-page');
+                    showPage(page);
+                });
+            });
+
+            // Hero buttons
+            var heroButtons = document.querySelectorAll('.hero-buttons a[data-page]');
+            heroButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var page = this.getAttribute('data-page');
+                    showPage(page);
+                });
+            });
+
+            // Hamburger menu
+            var hamburger = document.getElementById('hamburgerBtn');
+            hamburger.addEventListener('click', function() {
+                var nav = document.getElementById('navLinks');
+                nav.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
