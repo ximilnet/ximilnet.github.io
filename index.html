@@ -313,7 +313,6 @@
 
         .connect-item .fa-youtube { color: #FF0000; }
         .connect-item .fa-discord { color: #5865F2; }
-        .connect-item .fa-twitter { color: #000000; }
         .connect-item .fa-instagram { color: #E4405F; }
         .connect-item .fa-github { color: #ffffff; }
         .connect-item .fa-docker { color: #2496ED; }
@@ -322,13 +321,59 @@
 
         .connect-item:hover .fa-youtube,
         .connect-item:hover .fa-discord,
-        .connect-item:hover .fa-twitter,
         .connect-item:hover .fa-instagram,
         .connect-item:hover .fa-github,
         .connect-item:hover .fa-docker,
         .connect-item:hover .fa-mug-hot,
         .connect-item:hover .fa-matrix {
             color: #0a192f !important;
+        }
+
+        /* ===== DOCUMENTATION PAGE ===== */
+        .doc-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0 40px;
+            text-align: center;
+        }
+
+        .doc-content .doc-icon {
+            font-size: 64px;
+            color: #FF6000;
+            margin-bottom: 20px;
+        }
+
+        .doc-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .doc-content p {
+            font-size: 18px;
+            color: #94a3b8;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .doc-content .doc-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 36px;
+            background: #FF6000;
+            color: #0a192f;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .doc-content .doc-cta:hover {
+            background: #e65a00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 96, 0, 0.3);
         }
 
         /* ===== CONTACT PAGE ===== */
@@ -383,7 +428,6 @@
 
         .contact-social .social-link .fa-youtube { color: #FF0000; }
         .contact-social .social-link .fa-discord { color: #5865F2; }
-        .contact-social .social-link .fa-twitter { color: #000000; }
         .contact-social .social-link .fa-instagram { color: #E4405F; }
         .contact-social .social-link .fa-github { color: #ffffff; }
         .contact-social .social-link .fa-docker { color: #2496ED; }
@@ -607,6 +651,7 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a data-page="home">Home</a></li>
+                <li><a data-page="documentation">Documentation</a></li>
                 <li><a data-page="contact">Contact</a></li>
                 <li><a data-page="contact" class="nav-cta">Join Discord</a></li>
             </ul>
@@ -628,8 +673,8 @@
                     <a href="https://youtube.com/@ximilnet" target="_blank" class="btn btn-primary">
                         <i class="fab fa-youtube"></i> Watch on YouTube
                     </a>
-                    <a data-page="contact" class="btn btn-secondary" style="cursor:pointer;">
-                        <i class="fas fa-envelope"></i> Contact
+                    <a data-page="documentation" class="btn btn-secondary" style="cursor:pointer;">
+                        <i class="fas fa-book"></i> Documentation
                     </a>
                     <a data-page="contact" class="btn btn-outline" style="cursor:pointer;">
                         <i class="fab fa-discord"></i> Join Discord
@@ -653,10 +698,6 @@
                 <a href="https://discord.gg/yeR26bes" target="_blank" class="connect-item">
                     <i class="fab fa-discord"></i>
                     <span>Discord</span>
-                </a>
-                <a href="#" class="connect-item">
-                    <i class="fab fa-twitter"></i>
-                    <span>Twitter</span>
                 </a>
                 <a href="https://www.instagram.com/ximilnet/" target="_blank" class="connect-item">
                     <i class="fab fa-instagram"></i>
@@ -683,6 +724,28 @@
     </section>
 
     <!-- ============================================================ -->
+    <!-- ===== PAGE: DOCUMENTATION ===== -->
+    <!-- ============================================================ -->
+    <section class="page-section" id="page-documentation">
+        <div class="container">
+            <div class="doc-content">
+                <div class="doc-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2>Documentation & Resources</h2>
+                <p>
+                    All the resources for the videos are available on my wiki.<br />
+                    Feel free to check it out and happy homelabbing!<br /><br />
+                    If questions arise, do not hesitate to <a href="#" onclick="showPage('contact'); return false;" style="color: #FF6000; text-decoration: underline;">contact me</a>!
+                </p>
+                <a href="https://wiki.ximilnet.com" target="_blank" class="doc-cta">
+                    <i class="fas fa-external-link-alt"></i> Visit the Wiki
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
     <!-- ===== PAGE: CONTACT ===== -->
     <!-- ============================================================ -->
     <section class="page-section" id="page-contact">
@@ -702,9 +765,6 @@
                         </a>
                         <a href="https://discord.gg/yeR26bes" target="_blank" class="social-link">
                             <i class="fab fa-discord"></i> Discord
-                        </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i> Twitter
                         </a>
                         <a href="https://www.instagram.com/ximilnet/" target="_blank" class="social-link">
                             <i class="fab fa-instagram"></i> Instagram
@@ -769,7 +829,6 @@
                 <a href="https://www.youtube.com/@ximilnet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 <a href="https://discord.gg/yeR26bes" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
                 <a href="https://github.com/ximilnet" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </div>
