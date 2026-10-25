@@ -1,892 +1,748 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ximilnet — own·your·data</title>
-
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a192f;
-            color: #e4e4e7;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            position: sticky;
-            top: 0;
-            background: rgba(10, 25, 47, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-        }
-
-        .navbar .container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: #fff;
-        }
-
-        .logo span {
-            color: #FF6000;
-        }
-
-        .logo .tagline {
-            display: block;
-            font-size: 11px;
-            font-weight: 400;
-            color: #64748b;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-            list-style: none;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .nav-links a {
-            color: #94a3b8;
-            transition: color 0.2s;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #FF6000;
-            transition: width 0.2s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: #FF6000;
-            color: #0a192f !important;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: background 0.2s;
-        }
-
-        .nav-cta:hover {
-            background: #e65a00;
-            color: #0a192f !important;
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 24px;
-            color: #fff;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            padding: 60px 0 30px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 44px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            color: #fff;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero h1 .highlight {
-            color: #FF6000;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #94a3b8;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 28px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: #FF6000;
-            color: #0a192f;
-        }
-
-        .btn-primary:hover {
-            background: #e65a00;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 96, 0, 0.3);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.06);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: #FF6000;
-        }
-
-        /* ===== PAGE SECTIONS ===== */
-        .page-section {
-            display: none;
-            padding: 20px 0 60px;
-        }
-
-        .page-section.active {
-            display: block;
-        }
-
-        .section-header {
-            text-align: center;
-            padding: 10px 0 16px;
-        }
-
-        .section-header h2 {
-            font-size: 32px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .section-header p {
-            color: #94a3b8;
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* ===== CONNECT SECTION (6 icons in a row) ===== */
-        .connect-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1.5rem;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px 0 20px;
-        }
-
-        .connect-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 2rem 0.5rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #e4e4e7;
-            text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            aspect-ratio: 1 / 1;
-            min-height: 140px;
-        }
-
-        .connect-item i {
-            font-size: 3.2rem;
-            transition: transform 0.25s;
-            line-height: 1;
-        }
-
-        .connect-item span {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            letter-spacing: 0.01em;
-        }
-
-        .connect-item:hover {
-            background: #FF6000 !important;
-            border-color: #FF6000 !important;
-            color: #0a192f !important;
-            transform: scale(1.04) translateY(-6px);
-            box-shadow: 0 16px 40px rgba(255, 96, 0, 0.35);
-        }
-
-        .connect-item:hover i {
-            transform: scale(1.1);
-            color: #0a192f !important;
-        }
-
-        .connect-item:hover span {
-            color: #0a192f !important;
-        }
-
-        .connect-item .fa-youtube { color: #FF0000; }
-        .connect-item .fa-discord { color: #5865F2; }
-        .connect-item .fa-instagram { color: #E4405F; }
-        .connect-item .fa-github { color: #ffffff; }
-        .connect-item .fa-book { color: #00b894; }
-        .connect-item .fa-mug-hot { color: #FF813F; }
-
-        .connect-item:hover .fa-youtube,
-        .connect-item:hover .fa-discord,
-        .connect-item:hover .fa-instagram,
-        .connect-item:hover .fa-github,
-        .connect-item:hover .fa-book,
-        .connect-item:hover .fa-mug-hot {
-            color: #0a192f !important;
-        }
-
-        /* ===== DOCUMENTATION PAGE ===== */
-        .doc-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px 0 40px;
-            text-align: center;
-        }
-
-        .doc-content .doc-icon {
-            font-size: 64px;
-            color: #FF6000;
-            margin-bottom: 20px;
-        }
-
-        .doc-content h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-
-        .doc-content p {
-            font-size: 18px;
-            color: #94a3b8;
-            line-height: 1.8;
-            margin-bottom: 24px;
-        }
-
-        .doc-content .doc-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 36px;
-            background: #FF6000;
-            color: #0a192f;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.2s;
-        }
-
-        .doc-content .doc-cta:hover {
-            background: #e65a00;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 96, 0, 0.3);
-        }
-
-        /* ===== CONTACT PAGE ===== */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            padding: 20px 0 40px;
-            align-items: start;
-        }
-
-        .contact-social h3,
-        .contact-form h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 16px;
-        }
-
-        .contact-social .social-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-
-        .contact-social .social-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            transition: all 0.25s;
-            color: #e4e4e7;
-            font-weight: 500;
-        }
-
-        .contact-social .social-link:hover {
-            background: #FF6000;
-            border-color: #FF6000;
-            color: #0a192f;
-            transform: translateY(-2px);
-        }
-
-        .contact-social .social-link i {
-            font-size: 22px;
-            width: 30px;
-            text-align: center;
-        }
-
-        .contact-social .social-link .fa-youtube { color: #FF0000; }
-        .contact-social .social-link .fa-discord { color: #5865F2; }
-        .contact-social .social-link .fa-instagram { color: #E4405F; }
-        .contact-social .social-link .fa-github { color: #ffffff; }
-        .contact-social .social-link .fa-book { color: #00b894; }
-        .contact-social .social-link .fa-mug-hot { color: #FF813F; }
-
-        .contact-social .social-link:hover i {
-            color: #0a192f !important;
-        }
-
-        .contact-social .contact-email {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            color: #94a3b8;
-        }
-
-        .contact-social .contact-email i {
-            color: #FF6000;
-            font-size: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 14px;
-            color: #94a3b8;
-            margin-bottom: 6px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background: rgba(255, 255, 255, 0.04);
-            color: #fff;
-            font-size: 15px;
-            font-family: inherit;
-            transition: border 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #FF6000;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-group .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* Formspree success message */
-        .form-success {
-            display: none;
-            background: rgba(46, 213, 115, 0.15);
-            border: 1px solid #2ed573;
-            color: #2ed573;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .form-success.show {
-            display: block;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            padding: 30px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            font-size: 14px;
-            color: #64748b;
-        }
-
-        .footer .socials {
-            display: flex;
-            gap: 16px;
-        }
-
-        .footer .socials a {
-            color: #64748b;
-            transition: color 0.2s;
-            font-size: 18px;
-        }
-
-        .footer .socials a:hover {
-            color: #FF6000;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                padding: 16px 0;
-                gap: 12px;
-                border-top: 1px solid rgba(255, 255, 255, 0.06);
-                margin-top: 12px;
-            }
-
-            .nav-links.open {
-                display: flex;
-            }
-
-            .nav-links a {
-                font-size: 16px;
-            }
-
-            .nav-cta {
-                align-self: flex-start;
-            }
-
-            .hero h1 {
-                font-size: 30px;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            /* Switch to 3 columns on tablet */
-            .connect-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1rem;
-            }
-
-            .connect-item {
-                min-height: 120px;
-                padding: 1.5rem 0.25rem;
-            }
-
-            .connect-item i {
-                font-size: 2.6rem;
-            }
-
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .contact-social .social-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .footer {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 26px;
-            }
-
-            /* Switch to 2 columns on mobile */
-            .connect-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.8rem;
-            }
-
-            .connect-item {
-                min-height: 100px;
-                border-radius: 16px;
-            }
-
-            .connect-item i {
-                font-size: 2.2rem;
-            }
-
-            .connect-item span {
-                font-size: 0.75rem;
-            }
-
-            .contact-social .social-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ximilnet // Own Your Data</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+
+<!-- Meta SEO de base -->
+<meta name="description" content="Your trusted resource for building, managing, and optimizing home labs, NAS systems, and self-hosted solutions — with privacy at the core." />
+<meta name="author" content="Ximilnet" />
+
+<!-- Open Graph (Pour Discord, Twitter, etc.) -->
+<meta property="og:title" content="Ximilnet // Own Your Data" />
+<meta property="og:description" content="Privacy-first homelabs for everyone. Build, manage, and optimize your self-hosted infrastructure." />
+<meta property="og:image" content="https://ximilnet.github.io/photo.jpg" />
+<meta property="og:url" content="https://ximilnet.github.io/" />
+<meta property="og:type" content="website" />
+
+<!-- Fonts & Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== RESET & VARIABLES ===== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #0a192f;
+    --bg-elevated: #0f2138;
+    --accent: #FF6000;
+    --accent-hover: #ff7a26;
+    --text: #e4e4e7;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+    --border: rgba(255, 255, 255, 0.08);
+    --glow: 0 0 20px rgba(255, 96, 0, 0.25);
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Subtle Background Grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 96, 0, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 96, 0, 0.025) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a { text-decoration: none; color: inherit; }
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== NAVBAR ===== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .logo span { color: var(--accent); }
+  .logo .tagline {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    margin-top: 4px;
+    font-weight: 400;
+    text-transform: lowercase;
+  }
+  
+  /* Bouton Hamburger (caché par défaut sur PC) */
+  .hamburger {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .hamburger:hover {
+    background: rgba(255, 96, 0, 0.1);
+    border-color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    transition: color 0.2s;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
+  .nav-links a.active::after, .nav-links a:hover::after { width: 100%; }
+
+  /* ===== PAGE SECTIONS ===== */
+  .page-section {
+    display: none;
+    padding: 120px 0 80px; /* Padding top pour compenser la navbar fixe */
+    min-height: 100vh;
+    animation: fadeIn 0.4s ease;
+  }
+  .page-section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== HERO (HOME) ===== */
+  .hero { text-align: center; padding-top: 40px; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(30px, 4.5vw, 48px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: #fff;
+    max-width: 800px;
+    margin: 0 auto 18px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+  .hero h1 .highlight {
+    color: var(--accent);
+    text-shadow: 0 0 30px rgba(255, 96, 0, 0.5);
+  }
+  .hero p {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    font-weight: 400;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #0a192f;
+    box-shadow: var(--glow);
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 0 30px rgba(255, 96, 0, 0.5);
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: var(--glow);
+  }
+
+  /* ===== SECTION STYLES ===== */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* ===== CONNECT GRID ===== */
+  .connect-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .connect-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    transition: all 0.25s;
+    cursor: pointer;
+  }
+  .connect-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--glow);
+    transform: translateY(-3px);
+  }
+  .connect-card i {
+    font-size: 28px;
+    width: 40px;
+    text-align: center;
+    transition: transform 0.25s;
+  }
+  .connect-card .fa-youtube   { color: #FF0000; }
+  .connect-card .fa-discord   { color: #5865F2; }
+  .connect-card .fa-instagram { color: #E4405F; }
+  .connect-card .fa-github    { color: #ffffff; }
+  .connect-card .fa-book      { color: #00b894; }
+  .connect-card .fa-mug-hot   { color: #FF813F; }
+  .connect-card:hover i { transform: scale(1.12); }
+
+  .connect-card .card-info { display: flex; flex-direction: column; }
+  .connect-card .card-info strong {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .connect-card .card-info span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  /* ===== ABOUT PAGE ===== */
+  .about-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .about-image {
+    position: relative;
+  }
+  .about-image img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 50%; /* Rend la photo ronde */
+    border: 4px solid var(--bg);
+    outline: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(255, 96, 0, 0.3);
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+  }
+  .about-text h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .about-text p {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+  .about-text p strong {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ===== DOCUMENTATION ===== */
+  .doc-box {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    text-align: center;
+    border-radius: 8px;
+  }
+  .doc-box i {
+    font-size: 48px;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: block;
+  }
+  .doc-box p {
+    font-size: 17px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.8;
+  }
+  .doc-box p a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .doc-box p a:hover { color: var(--accent-hover); }
+
+  /* ===== CONTACT ===== */
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .contact-info h3, .contact-form h3 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .social-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.2s;
+  }
+  .social-item:hover {
+    border-color: var(--accent);
+    transform: translateX(4px);
+  }
+  .social-item i { width: 24px; text-align: center; font-size: 18px; }
+  .social-item .fa-discord   { color: #5865F2; }
+  .social-item .fa-github    { color: #ffffff; }
+  .social-item .fa-book      { color: #00b894; }
+  .social-item .fa-envelope  { color: var(--accent); }
+
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 15px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(255, 96, 0, 0.15);
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--text-dim); }
+  .form-group textarea { min-height: 120px; resize: vertical; }
+  .form-group .btn { width: 100%; justify-content: center; }
+
+  .form-success {
+    display: none;
+    padding: 16px;
+    margin-bottom: 20px;
+    background: rgba(255, 96, 0, 0.1);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+  .form-success.show { display: block; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    /* Menu mobile */
+    .hamburger {
+      display: block;
+    }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: var(--bg-elevated);
+      flex-direction: column;
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      gap: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .nav-links.mobile-open {
+      display: flex;
+    }
+    .navbar .container {
+      position: relative;
+      flex-wrap: wrap;
+    }
+    
+    /* Ajustements de mise en page mobile */
+    .about-wrapper { grid-template-columns: 1fr; text-align: center; }
+    .about-text { text-align: center; }
+    .connect-grid { grid-template-columns: 1fr; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .doc-box { padding: 32px 24px; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                ximil<span>net</span>
-                <span class="tagline">own·your·data</span>
-            </div>
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container">
+    <div class="logo" onclick="showPage('home')">
+      XIMIL<span>NET</span>
+      <span class="tagline">own·your·data</span>
+    </div>
+    
+    <!-- Bouton Hamburger pour Mobile -->
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+      <i class="fas fa-bars"></i>
+    </button>
 
-            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" class="nav-link active" data-target="home">Home</a></li>
+      <li><a onclick="showPage('about')" class="nav-link" data-target="about">About</a></li>
+      <li><a onclick="showPage('documentation')" class="nav-link" data-target="documentation">Docs</a></li>
+      <li><a onclick="showPage('contact')" class="nav-link" data-target="contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-            <ul class="nav-links" id="navLinks">
-                <li><a onclick="showPage('home')">Home</a></li>
-                <li><a onclick="showPage('documentation')">Documentation</a></li>
-                <li><a onclick="showPage('contact')">Contact</a></li>
-                <li><a onclick="showPage('contact')" class="nav-cta">Join Discord</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- ============================================================ -->
-    <!-- ===== PAGE: HOME ===== -->
-    <!-- ============================================================ -->
-    <section class="page-section active" id="page-home">
-        <div class="hero">
-            <div class="container">
-                <h1>Privacy-first <span class="highlight">homelabs</span> for everyone</h1>
-                <p>
-                    Your trusted resource for building, managing, and optimizing home labs,
-                    NAS systems, and self-hosted solutions — all with privacy at the core.
-                </p>
-                <div class="hero-buttons">
-                    <a href="https://youtube.com/@ximilnet" target="_blank" class="btn btn-primary">
-                        <i class="fab fa-youtube"></i> Watch on YouTube
-                    </a>
-                    <a onclick="showPage('documentation')" class="btn btn-secondary" style="cursor:pointer;">
-                        <i class="fas fa-book"></i> Documentation
-                    </a>
-                    <a onclick="showPage('contact')" class="btn btn-outline" style="cursor:pointer;">
-                        <i class="fab fa-discord"></i> Join Discord
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Connect section on Home page — 6 icons in a row -->
-        <div class="container" style="padding-top: 20px;">
-            <div style="text-align: center; padding: 30px 0 10px;">
-                <h2 style="font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 4px;">Connect with the Community</h2>
-                <p style="color: #94a3b8; font-size: 17px;">Follow me on your favorite platforms</p>
-            </div>
-
-            <div class="connect-grid">
-                <a href="https://www.youtube.com/@ximilnet" target="_blank" class="connect-item">
-                    <i class="fab fa-youtube"></i>
-                    <span>YouTube</span>
-                </a>
-                <a href="https://discord.gg/ynPSEwcKvK" target="_blank" class="connect-item">
-                    <i class="fab fa-discord"></i>
-                    <span>Discord</span>
-                </a>
-                <a href="https://www.instagram.com/ximilnet/" target="_blank" class="connect-item">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                <a href="https://github.com/ximilnet/" target="_blank" class="connect-item">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://wiki.ximilnet.com" target="_blank" class="connect-item">
-                    <i class="fas fa-book"></i>
-                    <span>Wiki</span>
-                </a>
-                <a href="https://ko-fi.com/ximilnet" target="_blank" class="connect-item">
-                    <i class="fas fa-mug-hot"></i>
-                    <span>Support the servers</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== PAGE: DOCUMENTATION ===== -->
-    <!-- ============================================================ -->
-    <section class="page-section" id="page-documentation">
-        <div class="container">
-            <div class="doc-content">
-                <div class="doc-icon">
-                    <i class="fas fa-book-open"></i>
-                </div>
-                <h2>Documentation & Resources</h2>
-                <p>
-                    All the resources for the videos are available on my wiki.<br />
-                    Feel free to check it out and happy homelabbing!<br /><br />
-                    If questions arise, do not hesitate to <a onclick="showPage('contact'); return false;" style="color: #FF6000; text-decoration: underline; cursor: pointer;">contact me</a>!
-                </p>
-                <a href="https://wiki.ximilnet.com" target="_blank" class="doc-cta">
-                    <i class="fas fa-external-link-alt"></i> Visit the Wiki
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================ -->
-    <!-- ===== PAGE: CONTACT ===== -->
-    <!-- ============================================================ -->
-    <section class="page-section" id="page-contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Contact</h2>
-                <p>Follow me, reach out, or join the conversation</p>
-            </div>
-
-            <div class="contact-wrapper">
-                <!-- LEFT: Social Links -->
-                <div class="contact-social">
-                    <h3>Find me online</h3>
-                    <div class="social-grid">
-                        <a href="https://www.youtube.com/@ximilnet" target="_blank" class="social-link">
-                            <i class="fab fa-youtube"></i> YouTube
-                        </a>
-                        <a href="https://discord.gg/yeR26bes" target="_blank" class="social-link">
-                            <i class="fab fa-discord"></i> Discord
-                        </a>
-                        <a href="https://www.instagram.com/ximilnet/" target="_blank" class="social-link">
-                            <i class="fab fa-instagram"></i> Instagram
-                        </a>
-                        <a href="https://github.com/ximilnet/" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                        <a href="https://wiki.ximilnet.com" target="_blank" class="social-link">
-                            <i class="fas fa-book"></i> Wiki
-                        </a>
-                        <a href="https://ko-fi.com/ximilnet" target="_blank" class="social-link">
-                            <i class="fas fa-mug-hot"></i> Support the servers
-                        </a>
-                    </div>
-
-                    <div class="contact-email">
-                        <i class="fas fa-envelope"></i>
-                        <span>contact@ximilnet.com</span>
-                    </div>
-                </div>
-
-                <!-- RIGHT: Working Contact Form -->
-                <div class="contact-form">
-                    <h3>Send a message</h3>
-
-                    <!-- Success message (hidden by default) -->
-                    <div id="form-success" class="form-success">
-                        <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.
-                    </div>
-
-                    <!-- The form -->
-                    <form id="contact-form" action="https://formspree.io/f/xkolypdy" method="POST">
-                        <div class="form-group">
-                            <label for="name">Your name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your name" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="What would you like to say?" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" id="submit-btn">
-                            <i class="fas fa-paper-plane"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <div class="container">
-        <div class="footer">
-            <span>&copy; 2026 ximilnet — built with 🔒 in the homelab</span>
-            <div class="socials">
-                <a href="https://www.youtube.com/@ximilnet" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="https://discord.gg/yeR26bes" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
-                <a href="https://github.com/ximilnet" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://wiki.ximilnet.com" target="_blank" aria-label="Wiki"><i class="fas fa-book"></i></a>
-            </div>
-        </div>
+<!-- ============================================================ -->
+<!-- PAGE: HOME -->
+<!-- ============================================================ -->
+<section id="page-home" class="page-section active">
+  <div class="container">
+    <div class="hero">
+      <h1>PRIVACY-FIRST <span class="highlight">HOMELABS</span> FOR EVERYONE</h1>
+      <p>Your trusted resource for building, managing, and optimizing home labs, NAS systems, and self-hosted solutions — with privacy at the core.</p>
+      <div class="hero-buttons">
+        <a href="https://www.youtube.com/channel/UCWeWnYm7jhFUaPkDUMkXWFg" target="_blank" class="btn btn-primary">
+          <i class="fab fa-youtube"></i> Watch on YouTube
+        </a>
+        <a href="#" onclick="showPage('about'); return false;" class="btn btn-outline">
+          <i class="fas fa-user"></i> About Me
+        </a>
+      </div>
     </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
-    <script>
-        // ===== PAGE NAVIGATION =====
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page-section').forEach(function(section) {
-                section.classList.remove('active');
-            });
+    <div style="margin-top: 80px;">
+      <div class="section-label">[ 01 // CONNECT ]</div>
+      <h2 class="section-title">Join the Community</h2>
+      <div class="connect-grid">
+        <a href="https://youtube.com/@ximilnet" target="_blank" class="connect-card">
+          <i class="fab fa-youtube"></i>
+          <div class="card-info"><strong>YouTube</strong><span>Video Guides</span></div>
+        </a>
+        <a href="https://discord.com/invite/ynPSEwcKvK" target="_blank" class="connect-card">
+          <i class="fab fa-discord"></i>
+          <div class="card-info"><strong>Discord</strong><span>Live Chat</span></div>
+        </a>
+        <a href="https://github.com/ximilnet" target="_blank" class="connect-card">
+          <i class="fab fa-github"></i>
+          <div class="card-info"><strong>GitHub</strong><span>Source Code</span></div>
+        </a>
+        <a href="https://wiki.ximilnet.com" target="_blank" class="connect-card">
+          <i class="fas fa-book"></i>
+          <div class="card-info"><strong>Wiki</strong><span>Documentation</span></div>
+        </a>
+        <a href="https://ko-fi.com/ximilnet" target="_blank" class="connect-card">
+          <i class="fas fa-mug-hot"></i>
+          <div class="card-info"><strong>Ko-Fi</strong><span>Support Servers</span></div>
+        </a>
+        <a href="https://www.instagram.com/ximilnet/" target="_blank" class="connect-card">
+          <i class="fab fa-instagram"></i>
+          <div class="card-info"><strong>Instagram</strong><span>Behind the Scenes</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // Show selected page
-            var target = document.getElementById('page-' + pageId);
-            if (target) {
-                target.classList.add('active');
-            }
+<!-- ============================================================ -->
+<!-- PAGE: ABOUT -->
+<!-- ============================================================ -->
+<section id="page-about" class="page-section">
+  <div class="container">
+    <div class="section-label">[ 02 // ABOUT ]</div>
+    <h2 class="section-title">Who is Ximilnet?</h2>
 
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    <div class="about-wrapper">
+      <div class="about-image">
+        <img src="photo.jpg" alt="Ximilnet Profile" />
+      </div>
+      <div class="about-text">
+        <h2>Hello, I'm Ximilnet.</h2>
+        <p>
+          I'm a passionate <strong>homelab enthusiast</strong> and privacy advocate. I created this platform to share my journey in building self-hosted infrastructure, managing NAS systems, and exploring the endless possibilities of open-source software.
+        </p>
+        <p>
+          In a world where our data is constantly harvested, I believe that <strong>you should own your data</strong>. Through my YouTube tutorials and my Wiki, I aim to demystify complex topics like Proxmox, Arch Linux, and Docker, making them accessible to everyone — from beginners to advanced users.
+        </p>
+        <p>
+          When I'm not tinkering with servers or writing documentation, I'm probably drinking coffee and planning my next deep-dive video.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // Close mobile menu
-            var navLinks = document.getElementById('navLinks');
-            if (navLinks) {
-                navLinks.classList.remove('open');
-            }
-        }
+<!-- ============================================================ -->
+<!-- PAGE: DOCUMENTATION -->
+<!-- ============================================================ -->
+<section id="page-documentation" class="page-section">
+  <div class="container">
+    <div class="section-label">[ 03 // DOCUMENTATION ]</div>
+    <h2 class="section-title">Resources & Guides</h2>
+    <div class="doc-box">
+      <i class="fas fa-book-open"></i>
+      <p>
+        All the resources for the videos are available on my Wiki.<br>
+        Feel free to check it out and happy homelabbing!<br><br>
+        If questions arise, do not hesitate to <a href="#" onclick="showPage('contact'); return false;">contact me</a>!
+      </p>
+      <a href="https://wiki.ximilnet.com" target="_blank" class="btn btn-primary">
+        <i class="fas fa-external-link-alt"></i> Visit the Wiki
+      </a>
+    </div>
+  </div>
+</section>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Hamburger menu
-            var hamburger = document.getElementById('hamburgerBtn');
-            if (hamburger) {
-                hamburger.addEventListener('click', function() {
-                    var nav = document.getElementById('navLinks');
-                    nav.classList.toggle('open');
-                });
-            }
+<!-- ============================================================ -->
+<!-- PAGE: CONTACT -->
+<!-- ============================================================ -->
+<section id="page-contact" class="page-section">
+  <div class="container">
+    <div class="section-label">[ 04 // CONTACT ]</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Find Me Online</h3>
+        <div class="social-list">
+          <a href="https://discord.com/invite/ynPSEwcKvK" target="_blank" class="social-item"><i class="fab fa-discord"></i> Discord</a>
+          <a href="https://github.com/ximilnet" target="_blank" class="social-item"><i class="fab fa-github"></i> GitHub</a>
+          <a href="https://wiki.ximilnet.com" target="_blank" class="social-item"><i class="fas fa-book"></i> Wiki</a>
+          <a href="mailto:contact@ximilnet.com" class="social-item"><i class="fas fa-envelope"></i> contact@ximilnet.com</a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send a Message</h3>
+        <div id="form-success" class="form-success"><i class="fas fa-check-circle"></i> Message sent successfully.</div>
+        <form id="contact-form" action="https://formspree.io/f/xkolypdy" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // ===== FORMSPREE FORM HANDLING =====
-            var form = document.getElementById('contact-form');
-            var successDiv = document.getElementById('form-success');
-            var submitBtn = document.getElementById('submit-btn');
+<!-- ===== FOOTER ===== -->
+<div class="container">
+  <div class="footer">
+    &copy; 2026 XIMILNET — BUILT IN THE HOMELAB
+  </div>
+</div>
 
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                    submitBtn.disabled = true;
-                });
-            }
+<script>
+  // ===== NAVIGATION SYSTEM =====
+  function showPage(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page-section').forEach(section => {
+      section.classList.remove('active');
+    });
 
-            // Check if the URL has the success parameter from Formspree
-            if (window.location.search.includes('success=true')) {
-                successDiv.classList.add('show');
-                if (window.history && window.history.replaceState) {
-                    var cleanUrl = window.location.href.replace(/\?success=true/, '');
-                    window.history.replaceState({}, document.title, cleanUrl);
-                }
-                if (submitBtn) {
-                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                    submitBtn.disabled = false;
-                }
-            }
-        });
-    </script>
+    // Show target page
+    const target = document.getElementById('page-' + pageId);
+    if (target) {
+      target.classList.add('active');
+    }
+
+    // Update active nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
+      if (link.dataset.target === pageId) {
+        link.classList.add('active');
+      }
+    });
+
+    // Fermer le menu mobile si on clique sur un lien
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks.classList.contains('mobile-open')) {
+      navLinks.classList.remove('mobile-open');
+    }
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ===== FORM HANDLING =====
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contact-form');
+    const successDiv = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submit-btn');
+
+    if (window.location.search.includes('success=true')) {
+      showPage('contact'); // Ouvre la page contact si on revient du formulaire
+      successDiv.classList.add('show');
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    }
+
+    if (form) {
+      form.addEventListener('submit', function() {
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
